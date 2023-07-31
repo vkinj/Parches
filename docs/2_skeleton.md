@@ -15,8 +15,7 @@ package app.revanced.patches.ads.patch
 @Name("Disable ads")
 @Description("Disables ads.")
 @DependsOn([DisableAdResourcePatch:class])
-@Compatibility([Package("com.some.app", arrayOf("0.1.0"))])
-@Version("0.0.1")
+@Compatibility([Package("com.some.app", arrayOf("1.3.0"))])
 class DisableAdsPatch : BytecodePatch(
     listOf(LoadAdsFingerprint)
 ) {
@@ -48,8 +47,7 @@ Lets start with understanding, how a patch is structured. A patch is mainly buil
    @Name("Disable Ads")
    @Description("Disables ads.")
    @DependsOn([DisableAdResourcePatch:class])
-   @Compatibility([Package("com.some.app", arrayOf("0.1.0"))])
-   @Version("0.0.1")
+   @Compatibility([Package("com.some.app", arrayOf("1.3.0"))])
    ```
 
    To give context about the patch, annotations are used. They serve different but important purposes:
@@ -69,10 +67,6 @@ Lets start with understanding, how a patch is structured. A patch is mainly buil
    - **All patches** should be annotated with `@Compatibility`. This annotation is the most complex, but **most important** one and serves the purpose of constraining a patch to a package. Every patch is compatible with usually one or more packages. Additionally, the constraint can optionally be extended to versions of the package to discourage the use of the patch with versions outside of the constraint.
 
      Example: _The patch disables ads for an app. The app regularly updates and the code of the app mutates heavily. In that case the patch might not be compatible for future, untested versions of the app. To discourage the use of the app with other versions than the versions, this patch was confirmed to work on, it is constrained to those versions only._
-
-   - Patches can be annotated with `@Version`.
-
-     > Currently, this annotation does not serve any purpose, but is added to patches by convention, in case a use case has been found.
 
    - Annotate a patch with `@RequiresIntegrations` if it depends on additional integrations to be merged by [ReVanced Patcher](https://github.com/revanced/revanced-patcher).
    
