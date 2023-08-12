@@ -1,3 +1,2 @@
-## 🧩 ReVanced Patches
 
-Patches for ReVanced.
+This is only for my personal use 
